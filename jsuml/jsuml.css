@@ -1,0 +1,66 @@
+
+.class {
+	position: absolute;
+	left:20;
+	top: 20;
+	display: block;
+	width: 150px;
+	background-color: white;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+
+	font-family: sans-serif;
+	font-size: 10px;
+
+	/* explorer behaviors */
+	behavior: url(drag-box.htc);
+	/* mozilla behaviors */
+	-moz-binding: url(moz-behaviors.xml#drag-box.htc);
+	-moz-box-sizing: border-box;
+	z-index: 10;
+
+}
+.class .name {
+	border-width: 0px;
+	border-style: solid;
+	border-color: black;
+	border-bottom-width: 1px;
+	font-weight: bold;
+	font-size: 11px;
+	padding: 2px;
+	background-color: lightblue;
+	text-align: center;
+}
+.class .attributes {
+	border-width: 0px;
+	border-style: solid;
+	border-color: black;
+	border-bottom-width: 1px;
+	padding: 2px;
+	color: darkblue;
+}
+.class .methods {
+	padding: 2px;
+	color: darkgreen;
+}
+
+.assoHorz {
+	position: absolute;
+	border-width: 0px;
+	border-style: dashed;
+	border-color: black;
+	border-bottom-width: 2px;
+	height: 0px;
+	z-index: 1;
+}
+
+.assoVert {
+	position: absolute;
+	border-width: 0px;
+	border-style: dashed;
+	border-color: black;
+	border-left-width: 2px;
+	width: 0px;
+	z-index: 1;
+}

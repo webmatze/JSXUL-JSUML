@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<public:component xmlns:public="urn:HTMLComponent" lightweight="true">
+<!-- sample cross-browser behavior, works on IE5+ and Mozilla 1.5+ -->
+
+<!-- dean.edwards/2004 -->
+<!-- keeping code tidy! -->
+
+<!-- event handlers -->
+<public:attach event="onmousedown" handler="beginDrag"/>
+<public:attach event="onmouseup" handler="endDrag"/>
+<public:attach event="onmousemove" for="document" handler="drag"/>
+<!-- methods -->
+<public:method name="move"/>
+<!-- events -->
+<public:event name="ondragstart" id="dragStartEvent"/>
+<public:event name="ondragstop" id="dragStopEvent"/>
+
+<script type="text/javascript">
+//<![CDATA[
+var dragX = 0;
+var dragY = 0;
+var dragging = false;
+
+function beginDrag() {
+	dragX = event.screenX - offsetLeft;
+	dragY = event.screenY - offsetTop;
+	dragging = true;
+	style.zIndex = 11;
+	dragStartEvent.fire(createEventObject());
+};
+
+function endDrag() {
+	style.zIndex = 10;
+	dragging = false;
+	dragStopEvent.fire(createEventObject());
+};
+
+function drag() {
+	if (dragging) move(event.screenX - dragX, event.screenY - dragY);
+	window.document.diagramm.updateAssociations();
+};
+
+function move(left, top) {
+	style.left = left + "px";
+	style.top = top + "px";
+	umlClass.x = left;
+	umlClass.y = top;
+};
+//]]>
+</script>
+</public:component>

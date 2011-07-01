@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JSUML</title>
+<link rel="stylesheet" href="jsuml.css" type="text/css" />
+<script type="text/javascript" src="jsumlclasses.js"></script>
+<script type="text/javascript" language="JavaScript1.2">
+<!--
+//<![CDATA[
+function init() {
+	//Ein Diagramm erstellen
+	var testDiagramm = new Diagramm("Testdiagramm");
+	testDiagramm.author = "lppkam";
+
+	//Eine erste Testklasse erstellen
+	var testClass = new Class("1","TestClass");
+
+	testClass.addAttribute(new Attribute("id","number"));
+	testClass.addAttribute(new Attribute("name","string"));
+	testClass.addAttribute(new Attribute("beschreibung","string"));
+	testClass.addMethod(new Method("getName","string"));
+	testClass.addMethod(new Method("setName","void"));
+
+	testDiagramm.addClass(testClass);
+
+	//Eine zweite Testklasse erstellen
+	var newClass = new Class("2","NewClass");
+
+	newClass.addAttribute(new Attribute("id","number"));
+	newClass.addMethod(new Method("draw","void"));
+
+	testDiagramm.addClass(newClass);
+
+	//Eine dritte Testklasse erstellen
+	var thirdClass = new Class("3","ThirdClass");
+
+	thirdClass.addAttribute(new Attribute("id","number"));
+	thirdClass.addAttribute(new Attribute("name","string"));
+	thirdClass.addMethod(new Method("draw","void"));
+
+	//beide Klassen zum Diagramm hinzufügen
+	testDiagramm.addClass(thirdClass);
+
+	//zwei Association zwischen den drei Klassen anlegen
+	var asso = new Association(testClass, newClass);
+	var asso2 = new Association(testClass, thirdClass);
+
+	//die Association zum Diagramm hinzufügen
+	testDiagramm.addAssociation(asso);
+	testDiagramm.addAssociation(asso2);
+
+	//Diagramm ins dokument einfügen um später drauf zugreifen zu können
+	document.diagramm = testDiagramm;
+}
+//]]>
+//-->
+</script>
+</head>
+<body onLoad="init()">
+
+	<!--
+	<div class="class">
+		<div class="name">
+			<div>Test Klasse</div>
+		</div>
+		<div class="attributes">
+			<div>Attrib1: String</div>
+			<div>Attrib2: String</div>
+			<div>Attrib3: String</div>
+		</div>
+		<div class="methods">
+			<div>method1</div>
+			<div>method2</div>
+			<div>method3</div>
+		</div>
+	</div>
+	<div class="assoHorz"></div>
+	-->
+
+
+</body>
+</html>
